@@ -21,6 +21,8 @@ atWork/static/*
 # properties
 .env
 
+/simple_json_db
+
 # misc
 .DS_Store
 .env.local

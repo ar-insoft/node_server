@@ -1,6 +1,6 @@
 {
   "name": "api",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
@@ -19,7 +19,8 @@
     "http-errors": "~1.6.2",
     "jade": "~1.11.0",
     "morgan": "^1.9.1",
-    "pg": "^7.4.3"
+    "pg": "^7.4.3",
+    "simple-json-db": "^1.2.3"
   },
   "devDependencies": {
     "cross-env": "^7.0.3",

@@ -4,6 +4,8 @@ var router = express.Router();
 const fse = require('fs-extra');
 const path = require('path');
 
+const JSONdb = require('simple-json-db');
+
 /* GET listing. */
 router.get('/', function(request, response, next) {
   response.send('respond for get '+Date.now().toISOString());
@@ -41,6 +43,18 @@ router.post("/", async (req, res) => {
   } catch (err) {
     console.error('Error while writing ', err)
   }
+
+  const result = { type: "post", time: new Date().toISOString() };
+  return res.json(result);
+});
+
+const przerobioneEndpoint = "/przerobione/"
+router.post(przerobioneEndpoint, async (req, res) => {
+  console.log('post handled ' + przerobioneEndpoint, req.body)
+  const zgloszoneZdarzenie = req.body
+  const db = new JSONdb(process.env.AT_WORK_SIMPLE_JSON_DB);
+  const key = 'key_' + zgloszoneZdarzenie.ep + '_' + zgloszoneZdarzenie.index
+  db.set(key, zgloszoneZdarzenie);
 
   const result = { type: "post", time: new Date().toISOString() };
   return res.json(result);
